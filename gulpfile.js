@@ -6,6 +6,7 @@ var transform = require('vinyl-transform');
 var less = require('gulp-less');
 var LessAutoprefix = require('less-plugin-autoprefix');
 var autoprefix = new LessAutoprefix({browsers: ["last 2 versions"]});
+var karma = require('karma').server;
 
 gulp.task('browserify', function () {
   var browserified = transform(function(filename) {
@@ -30,6 +31,12 @@ gulp.task('style', function() {
       plugins: [autoprefix]
      }))
     .pipe(gulp.dest('./dist/styles'));
+});
+
+gulp.task('test', function (done) {
+  karma.start({
+    configFile: __dirname + '/my.conf.js'
+  }, done);
 });
 
 gulp.task('default',['browserify', 'style', 'copy']);
