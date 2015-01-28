@@ -1,10 +1,14 @@
 Сборка проекта:
+```
 npm install
 gulp
+```
 Запустить вебсервер(если вдруг что:))
+```
 cd dist
 python -m "SimpleHTTPServer"
 open http://localhost:8000
+```
 
 
 Живое демо:
